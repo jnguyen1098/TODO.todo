@@ -13,12 +13,14 @@ print_todo_file() {
 }
 
 print_todo_help() {
-    echo "todo         - print $TODO_FILE"
-    echo "todo <text>  - add <text> to bottom of $TODO_FILE"
-    echo "todo edit    - edit the $TODO_FILE directly"
-    echo "todo del <n> - delete the <n>th entry off $TODO_FILE"
-    echo 'todo pt      - pop top TODO entry'
-    echo 'todo pb      - pop bottom TODO entry'
+    echo "Manage a directory-specific, line-by-line TODO list"
+    echo ""
+    echo "    todo         - print $TODO_FILE"
+    echo "    todo <text>  - add <text> to bottom of $TODO_FILE"
+    echo "    todo edit    - edit the $TODO_FILE directly"
+    echo "    todo del <n> - delete the <n>th entry off $TODO_FILE"
+    echo "    todo pt      - pop top TODO entry"
+    echo "    todo pb      - pop bottom TODO entry"
 }
 
 todo() {
