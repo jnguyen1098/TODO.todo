@@ -28,15 +28,15 @@ SOFTWARE.
 ```
 
 ## Testing
-todofile doesnt exist
-  todofile name is directory
+- todofile doesnt exist
+  - todofile name is directory
     - todo
     - todo help
     - todo edit
     - todo del 3
     - todo pt
     - todo pb
-  user does not have permissions for todofile
+  - user does not have permissions for todofile
     - todo
     - todo help
     - todo edit
@@ -50,16 +50,16 @@ todofile doesnt exist
     - todo del 3, then delete the file if it exists
     - todo pt, then delete the file if it exists
     - todo pb, then delete the file if it exists
-todofile exists
-  todofile is empty
+- todofile exists
+  - todofile is empty
     - todo
     - todo edit, then edit the file, then truncate it
     - todo HELLO WORLD, then truncate the file
-    - todo del <big number>
+    - todo del \<big number\>
     - todo del out of range
     - todo pt
     - todo pb
-  todofile is not empty
+  - todofile is not empty
     - todo
     - todo hello
     - todo edit
