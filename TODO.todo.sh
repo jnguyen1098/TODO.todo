@@ -2,11 +2,10 @@
 
 TODO_FILE="TODO.todo"
 TODO_EDITOR="vim"
-EMPTY_TODO_LIST_MESSAGE="Your TODO.todo list is empty! Congrats!"
 
 print_todo_file() {
     if [ "$(wc -l < "$1")" -eq 0 ]; then
-        echo "$EMPTY_TODO_LIST_MESSAGE"
+        echo "Your TODO.todo list is empty! Congrats!"
     else
         cat -n "$1"
     fi
