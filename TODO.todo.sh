@@ -32,7 +32,7 @@ todo() {
         return
     elif [ ! -f "$TODO_FILE" ]; then
         echo "Creating $(pwd)/$TODO_FILE"
-        touch "$TODO_FILE"
+        touch "$TODO_FILE" || echo "Couldn't create $TODO_FILE. Quitting." && return
     fi
 
     case "$#" in
