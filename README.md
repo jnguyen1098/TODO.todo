@@ -3,7 +3,7 @@ Really simple bash TODO management script
 
 ## Installation
 
-To have the `todo` command available on startup, add the following line to your `~/.bashrc` file (changing the path as you see fit).
+Add the following line to your `~/.bashrc` file (changing the path as needed).
 
 ```bash
 if [ -f path/to/TODO.todo.sh ]; then
@@ -11,11 +11,7 @@ if [ -f path/to/TODO.todo.sh ]; then
 fi
 ```
 
-This will run `TODO.todo.sh` on startup, which defines the environment variables
-and functions necessary for it to run.
-
-The `if [ -f path/to/TODO.todo.sh ]; then . . . fi` part is just bash syntax for
-checking if the file exists (just in case something happens to the script).
+This will run `TODO.todo.sh` on startup and allow usage of the `todo` command.
 
 ## Usage
 ```
@@ -40,14 +36,7 @@ Creating path/to/TODO.todo
 Your TODO.todo list is empty! Congrats!
 ```
 
-### Edit TODO.todo using an external text editor
-
-```bash
-todo edit
-# You should now be in the text editor defined in the script
-```
-
-### Append plain text to bottom of TODO.todo
+### Add an entry to your TODO.todo file
 
 ```bash
 $ todo 'refactor methods'
@@ -55,8 +44,6 @@ $ todo 'refactor methods'
      2  go on a walk
      3  refactor methods
 ```
-
-### Append interpolated text to bottom of TODO.todo
 
 ```bash
 $ todo "fix func issue by next week ($(date --date="-7 days ago"))"
@@ -118,6 +105,13 @@ $ todo pb
      1  first
      2  second
      3  third
+```
+
+### Edit TODO.todo using an external text editor
+
+```bash
+todo edit
+# You should now be in the text editor defined in the script
 ```
 
 ## License
