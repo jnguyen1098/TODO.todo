@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 TODO_FILE="TODO.todo"
-TODO_EDITOR="$EDITOR"
+TODO_EDITOR="vim"
 EMPTY_TODO_LIST_MESSAGE="Your TODO.todo list is empty! Congrats!"
 
 print_todo_file() {
@@ -32,7 +32,10 @@ todo() {
         return
     elif [ ! -f "$TODO_FILE" ]; then
         echo "Creating $(pwd)/$TODO_FILE"
-        touch "$TODO_FILE" || echo "Couldn't create $TODO_FILE. Quitting." && return
+        if ! touch "$TODO_FILE"; then
+            echo "Couldn't create $TODO_FILE. Quitting"
+            return
+        fi
     fi
 
     case "$#" in
