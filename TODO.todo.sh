@@ -69,6 +69,9 @@ todo() {
                     sed -i "$2d" "$TODO_FILE"
                     print_todo_file "$TODO_FILE"
                     ;;
+                *)
+                    print_todo_help
+                    ;;
             esac
             ;;
         *)

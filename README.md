@@ -60,24 +60,64 @@ $ todo 'refactor methods'
 
 ```bash
 $ todo "fix func issue by next week ($(date --date="-7 days ago"))"
-     1  take a break
+     1  take a rest
      2  go on a walk
-     3  refactor functions
+     3  refactor methods
      4  fix func issue by next week (Sun 04 Apr 2021 06:36:08 PM EDT)
 ```
 
-### Delete a line in TODO.todo
+### Delete entry by line number in TODO.todo
 
 ```bash
 $ todo
-     1  take a break
+     1  take a rest
      2  go on a walk
-     3  refactor functions
+     3  refactor methods
      4  fix func issue by next week (Sun 04 Apr 2021 06:36:08 PM EDT)
 $ todo del 3
-     1  take a break
+     1  take a rest
      2  go on a walk
      3  fix func issue by next week (Sun 04 Apr 2021 06:36:08 PM EDT)
+```
+
+### Pop (delete) top-most item in TODO.todo
+
+```bash
+$ todo pb
+     1  first
+     2  second
+     3  third
+     4  fourth
+     5  fifth
+$ todo pt
+     1  second
+     2  third
+     3  fourth
+     4  fifth
+$ todo pt
+     1  third
+     2  fourth
+     3  fifth
+```
+
+### Pop (delete) bottom-most item in TODO.todo
+
+```bash
+$ todo
+     1  first
+     2  second
+     3  third
+     4  fourth
+     5  fifth
+$ todo pb
+     1  first
+     2  second
+     3  third
+     4  fourth
+$ todo pb
+     1  first
+     2  second
+     3  third
 ```
 
 ## License
