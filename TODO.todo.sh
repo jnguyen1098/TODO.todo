@@ -1,4 +1,5 @@
-todo() {
+todo()
+{
     TODOFILE="TODO.todo"
     _EDITOR="$EDITOR"
 
@@ -6,11 +7,12 @@ todo() {
         echo "todo         - print $TODOFILE"
         echo "todo <text>  - add <text> to bottom of $TODOFILE"
         echo "todo edit    - edit the $TODOFILE directly"
-        echo "todo del <#> - delete the <#>th entry off $TODOFILE"
+        echo "todo del <n> - delete the <n>th entry off $TODOFILE"
         echo 'todo pt      - pop top TODO entry'
         echo 'todo pb      - pop bottom TODO entry'
         return
     fi
+
     if [ -d "$TODOFILE" ]; then
         echo "$TODOFILE is a directory. Quitting."
         return
@@ -18,6 +20,7 @@ todo() {
         echo "Creating $(pwd)/$TODOFILE"
         touch "$TODOFILE"
     fi
+
     case "$#" in
         0)
             cat -n "$TODOFILE"
