@@ -1,17 +1,22 @@
 todo() {
     TODOFILE="TODO.todo"
     _EDITOR="$EDITOR"
+
     if [ "$1" == "help" ]; then
-        echo "todo        - print $TODOFILE"
-        echo 'todo help   - print this prompt again'
-        echo "todo edit   - edit the $TODOFILE directly"
-        echo 'todo pt     - pop top TODO entry'
-        echo 'todo pb     - pop bottom TODO entry'
-        echo "todo <text> - add <text> to bottom of $TODOFILE"
-    fi
-    if [ ! -f "$TODOFILE" ]; then
-        echo "Can't find $TODOFILE"
+        echo "todo         - print $TODOFILE"
+        echo "todo <text>  - add <text> to bottom of $TODOFILE"
+        echo "todo edit    - edit the $TODOFILE directly"
+        echo "todo del <#> - delete the <#>th entry off $TODOFILE"
+        echo 'todo pt      - pop top TODO entry'
+        echo 'todo pb      - pop bottom TODO entry'
         return
+    fi
+    if [ -d "$TODOFILE" ]; then
+        echo "$TODOFILE is a directory. Quitting."
+        return
+    elif [ ! -f "$TODOFILE" ]; then
+        echo "Creating $(pwd)/$TODOFILE"
+        touch "$TODOFILE"
     fi
     case "$#" in
         0)
