@@ -5,7 +5,7 @@ TODO_EDITOR="vim"
 EMPTY_TODO_LIST_MESSAGE="Your TODO.todo list is empty! Congrats!"
 
 print_todo_file() {
-    if [ $(wc -l < $1) -eq 0 ]; then
+    if [ "$(wc -l < "$1")" -eq 0 ]; then
         echo "$EMPTY_TODO_LIST_MESSAGE"
     else
         cat -n "$1"
