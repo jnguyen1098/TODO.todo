@@ -1,5 +1,5 @@
 # TODO.todo
-Really simple bash TODO management script
+Simple bash TODO list manager that supports directory-specific TODO lists, push/pop, and line numbers.
 
 ## Installation
 
