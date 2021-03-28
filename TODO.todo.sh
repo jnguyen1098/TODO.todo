@@ -1,9 +1,11 @@
+#!/usr/bin/env sh
+
 todo()
 {
     TODOFILE="TODO.todo"
-    _EDITOR="$EDITOR"
+    TODO_EDITOR="$EDITOR"
 
-    if [ "$1" == "help" ]; then
+    if [ "$1" = "help" ]; then
         echo "todo         - print $TODOFILE"
         echo "todo <text>  - add <text> to bottom of $TODOFILE"
         echo "todo edit    - edit the $TODOFILE directly"
@@ -28,7 +30,7 @@ todo()
         1)
             case "$1" in
                 "edit")
-                    $_EDITOR "$TODOFILE"
+                    "$TODO_EDITOR" "$TODOFILE"
                     ;;
                 "pt")
                     sed -i '1d' "$TODOFILE"
