@@ -1,5 +1,118 @@
 # TODO.todo
-Really simple bash TODO management script
+Simple bash TODO list manager that supports directory-specific TODO lists, push/pop, and line numbers.
+
+## Installation
+
+Add the following line to your `~/.bashrc` file (changing the path as needed).
+
+```bash
+if [ -f path/to/TODO.todo.sh ]; then
+    . path/to/TODO.todo.sh
+fi
+```
+
+This will run `TODO.todo.sh` on startup and allow usage of the `todo` command.
+
+## Usage
+```
+Manage a directory-specific, line-by-line TODO list
+
+    todo         - print TODO.todo
+    todo <text>  - add <text> to bottom of TODO.todo
+    todo edit    - edit the TODO.todo directly
+    todo del <n> - delete the <n>th entry off TODO.todo
+    todo pt      - pop top TODO entry
+    todo pb      - pop bottom TODO entry
+```
+
+## Examples
+
+### Initialize a TODO.todo in a directory
+
+```bash
+$ cd my_directory
+$ todo
+Creating path/to/TODO.todo
+Your TODO.todo list is empty! Congrats!
+```
+
+### Add an entry to your TODO.todo file
+
+```bash
+$ todo 'refactor methods'
+     1  take a rest
+     2  go on a walk
+     3  refactor methods
+```
+
+```bash
+$ todo "fix func issue by next week ($(date --date="-7 days ago"))"
+     1  take a rest
+     2  go on a walk
+     3  refactor methods
+     4  fix func issue by next week (Sun 04 Apr 2021 06:36:08 PM EDT)
+```
+
+### Delete entry by line number in TODO.todo
+
+```bash
+$ todo
+     1  take a rest
+     2  go on a walk
+     3  refactor methods
+     4  fix func issue by next week (Sun 04 Apr 2021 06:36:08 PM EDT)
+$ todo del 3
+     1  take a rest
+     2  go on a walk
+     3  fix func issue by next week (Sun 04 Apr 2021 06:36:08 PM EDT)
+```
+
+### Pop (delete) top-most item in TODO.todo
+
+```bash
+$ todo pb
+     1  first
+     2  second
+     3  third
+     4  fourth
+     5  fifth
+$ todo pt
+     1  second
+     2  third
+     3  fourth
+     4  fifth
+$ todo pt
+     1  third
+     2  fourth
+     3  fifth
+```
+
+### Pop (delete) bottom-most item in TODO.todo
+
+```bash
+$ todo
+     1  first
+     2  second
+     3  third
+     4  fourth
+     5  fifth
+$ todo pb
+     1  first
+     2  second
+     3  third
+     4  fourth
+$ todo pb
+     1  first
+     2  second
+     3  third
+```
+
+### Edit TODO.todo using an external text editor
+
+```bash
+todo edit
+# You should now be in the text editor defined in the script
+```
 
 ## License
 
@@ -26,44 +139,3 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
-
-## Testing
-- todofile doesnt exist
-  - todofile name is directory
-    - todo
-    - todo help
-    - todo edit
-    - todo del 3
-    - todo pt
-    - todo pb
-  - user does not have permissions for todofile
-    - todo
-    - todo help
-    - todo edit
-    - todo del 3
-    - todo pt
-    - todo pb
-  user does have permissions for todofile
-    - todo, then delete the file if it exists
-    - todo help, then delete the file is it exists
-    - todo edit, then delete the file if it exists
-    - todo del 3, then delete the file if it exists
-    - todo pt, then delete the file if it exists
-    - todo pb, then delete the file if it exists
-- todofile exists
-  - todofile is empty
-    - todo
-    - todo edit, then edit the file, then truncate it
-    - todo HELLO WORLD, then truncate the file
-    - todo del \<big number\>
-    - todo del out of range
-    - todo pt
-    - todo pb
-  - todofile is not empty
-    - todo
-    - todo hello
-    - todo edit
-    - todo del
-    - todo del out of range
-    - todo pt
-    - todo pb

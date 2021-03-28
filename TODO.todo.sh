@@ -2,23 +2,24 @@
 
 TODO_FILE="TODO.todo"
 TODO_EDITOR="vim"
-EMPTY_TODO_LIST_MESSAGE="Your TODO.todo list is empty! Congrats!"
 
 print_todo_file() {
     if [ "$(wc -l < "$1")" -eq 0 ]; then
-        echo "$EMPTY_TODO_LIST_MESSAGE"
+        echo "Your TODO.todo list is empty! Congrats!"
     else
         cat -n "$1"
     fi
 }
 
 print_todo_help() {
-    echo "todo         - print $TODO_FILE"
-    echo "todo <text>  - add <text> to bottom of $TODO_FILE"
-    echo "todo edit    - edit the $TODO_FILE directly"
-    echo "todo del <n> - delete the <n>th entry off $TODO_FILE"
-    echo 'todo pt      - pop top TODO entry'
-    echo 'todo pb      - pop bottom TODO entry'
+    echo "Manage a directory-specific, line-by-line TODO list"
+    echo ""
+    echo "    todo         - print $TODO_FILE"
+    echo "    todo <text>  - add <text> to bottom of $TODO_FILE"
+    echo "    todo edit    - edit the $TODO_FILE directly"
+    echo "    todo del <n> - delete the <n>th entry off $TODO_FILE"
+    echo "    todo pt      - pop top TODO entry"
+    echo "    todo pb      - pop bottom TODO entry"
 }
 
 todo() {
@@ -66,6 +67,9 @@ todo() {
                 "del")
                     sed -i "$2d" "$TODO_FILE"
                     print_todo_file "$TODO_FILE"
+                    ;;
+                *)
+                    print_todo_help
                     ;;
             esac
             ;;
