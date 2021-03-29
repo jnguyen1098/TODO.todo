@@ -1,21 +1,28 @@
 #!/usr/bin/env sh
 
+########## VARIABLES ##########
 TODO_TEST="_tmp_TODO.todo_test"
 TODOtodo="./TODO.todo.sh"
+CURR_TEST=1
+NUM_TESTS=6
 
+# Check if the test folder remains
 if [ -d "$TODO_TEST" ]; then
     echo "Test folder remnants remain. Delete and restart"
     exit 1
 fi
 
+# Trap deletion of the folder upon all exits
 trap 'cd .. && rm -rf "$TODO_TEST" && exit' 0 2 3 15
 
+# Import TODO.todo.sh
 . "$TODOtodo"
 
+# Create and enter testing arena
 mkdir "$TODO_TEST"
-
 cd "$TODO_TEST"
 
+########## BOILERPLATE MESSAGES ##########
 CURR_PWD="$(pwd)"
 CREAT_MSG="Creating $CURR_PWD/TODO.todo"
 EMPTY_MSG="Your TODO.todo list is empty! Congrats!"
@@ -28,8 +35,7 @@ HELP_MSG='Manage a directory-specific, line-by-line TODO list
     todo pt      - pop top TODO entry
     todo pb      - pop bottom TODO entry'
 
-NUM_TESTS=10
-
+########## TESTS ##########
 desc1="Empty TODO 'hi' entry"
 input1="todo hi"
 output1="$CREAT_MSG
@@ -81,16 +87,16 @@ $EMPTY_MSG
 $EMPTY_MSG
 $EMPTY_MSG"
 
-i=1
-while [ "$i" -le "$NUM_TESTS" ]; do
-    eval CURR_INPUT=\$input$i
-    eval EXP_OUTPUT=\$output$i
-    eval TEST_DESC=\$desc$i
-    echo "Executing test $i: $TEST_DESC"
+########## TEST RUNNER ##########
+while [ "$CURR_TEST" -le "$NUM_TESTS" ]; do
+    eval CURR_INPUT=\$input$CURR_TEST
+    eval EXP_OUTPUT=\$output$CURR_TEST
+    eval TEST_DESC=\$desc$CURR_TEST
+    echo "Executing test $CURR_TEST: $TEST_DESC"
     eval "$CURR_INPUT" > CURR_OUTPUT
     echo "$EXP_OUTPUT" > EXP_OUTPUT
     diff CURR_OUTPUT EXP_OUTPUT
-    true $((i=i+1))
+    true $((CURR_TEST=CURR_TEST+1))
     rm -rf TODO.todo
 #    cat CURR_OUTPUT > ../tmp_out
 done
