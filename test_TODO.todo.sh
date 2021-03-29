@@ -17,17 +17,28 @@ mkdir "$TODO_TEST"
 cd "$TODO_TEST"
 
 CURR_PWD="$(pwd)"
-NUM_TESTS=3
+CREAT_MSG="Creating $CURR_PWD/TODO.todo"
+EMPTY_MSG="Your TODO.todo list is empty! Congrats!"
+HELP_MSG='Manage a directory-specific, line-by-line TODO list
+
+    todo         - print TODO.todo
+    todo <text>  - add <text> to bottom of TODO.todo
+    todo edit    - edit the TODO.todo directly
+    todo do <n>  - delete the <n>th entry off TODO.todo
+    todo pt      - pop top TODO entry
+    todo pb      - pop bottom TODO entry'
+
+NUM_TESTS=10
 
 desc1="Empty TODO 'hi' entry"
 input1="todo hi"
-output1="Creating $CURR_PWD/TODO.todo
+output1="$CREAT_MSG
      1\thi"
 
 desc2="Initializing an empty TODO.todo"
 input2='todo'
-output2="Creating $CURR_PWD/TODO.todo
-Your TODO.todo list is empty! Congrats!"
+output2="$CREAT_MSG
+$EMPTY_MSG"
 
 desc3="Initialize empty list, push 'hi' and 'bye', delete #1, pt, push 'hi'"
 input3='todo
@@ -36,10 +47,8 @@ todo "bye"
 todo do 1
 todo pt
 todo hi'
-output3="Creating $CURR_PWD/TODO.todo
-     1\thi"
-output3="Creating $CURR_PWD/TODO.todo
-Your TODO.todo list is empty! Congrats!
+output3="$CREAT_MSG
+$EMPTY_MSG
      1\thi
      1\thi
      2\tbye
@@ -47,13 +56,14 @@ Your TODO.todo list is empty! Congrats!
 Your TODO.todo list is empty! Congrats!
      1\thi"
 
-desc4="test4"
-input4='echo "date"'
-output4="this is output 4"
+desc4="TODO.todo help prompt"
+input4="todo help"
+output4="$HELP_MSG"
 
-desc5="test5"
-input5="ls -laF"
-output5="this is output 5"
+desc5="Attempt to check off empty TODO.todo"
+input5="todo do 3"
+output5="$CREAT_MSG
+$EMPTY_MSG"
 
 i=1
 while [ "$i" -le "$NUM_TESTS" ]; do
@@ -66,5 +76,5 @@ while [ "$i" -le "$NUM_TESTS" ]; do
     diff CURR_OUTPUT EXP_OUTPUT
     true $((i=i+1))
     rm -rf TODO.todo
-#    cat CURR_OUTPUT
+    cat CURR_OUTPUT > ../tmp_out
 done
