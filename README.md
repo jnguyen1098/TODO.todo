@@ -121,6 +121,10 @@ todo edit
 # You should now be in the text editor defined in the script
 ```
 
+## Testing
+
+I have included a very simple automated testing script to verify outputs.
+
 ## License
 
 ```
