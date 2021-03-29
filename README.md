@@ -39,6 +39,9 @@ Your TODO.todo list is empty! Congrats!
 ### Add an entry to your TODO.todo file
 
 ```bash
+$ todo
+     1  take a rest
+     2  go on a walk
 $ todo 'refactor methods'
      1  take a rest
      2  go on a walk
@@ -46,6 +49,10 @@ $ todo 'refactor methods'
 ```
 
 ```bash
+$ todo
+     1  take a rest
+     2  go on a walk
+     3  refactor methods
 $ todo "fix func issue by next week ($(date --date="-7 days ago"))"
      1  take a rest
      2  go on a walk
