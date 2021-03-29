@@ -20,7 +20,7 @@ Manage a directory-specific, line-by-line TODO list
     todo         - print TODO.todo
     todo <text>  - add <text> to bottom of TODO.todo
     todo edit    - edit the TODO.todo directly
-    todo del <n> - delete the <n>th entry off TODO.todo
+    todo do <n>  - delete the <n>th entry off TODO.todo
     todo pt      - pop top TODO entry
     todo pb      - pop bottom TODO entry
 ```
@@ -53,7 +53,7 @@ $ todo "fix func issue by next week ($(date --date="-7 days ago"))"
      4  fix func issue by next week (Sun 04 Apr 2021 06:36:08 PM EDT)
 ```
 
-### Delete entry by line number in TODO.todo
+### Check off entry by line number in TODO.todo
 
 ```bash
 $ todo
@@ -61,13 +61,13 @@ $ todo
      2  go on a walk
      3  refactor methods
      4  fix func issue by next week (Sun 04 Apr 2021 06:36:08 PM EDT)
-$ todo del 3
+$ todo do 3
      1  take a rest
      2  go on a walk
      3  fix func issue by next week (Sun 04 Apr 2021 06:36:08 PM EDT)
 ```
 
-### Pop (delete) top-most item in TODO.todo
+### Check off top-most entry in TODO.todo
 
 ```bash
 $ todo pb
@@ -87,7 +87,7 @@ $ todo pt
      3  fifth
 ```
 
-### Pop (delete) bottom-most item in TODO.todo
+### Check off bottom-most entry in TODO.todo
 
 ```bash
 $ todo
