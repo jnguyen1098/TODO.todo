@@ -8,7 +8,7 @@ if [ -d "$TODO_TEST" ]; then
     exit 1
 fi
 
-trap 'rm -rf "$TODO_TEST"' 0 2 3 15
+trap 'cd .. && rm -rf "$TODO_TEST" && exit' 0 2 3 15
 
 . "$TODOtodo"
 
@@ -17,41 +17,37 @@ mkdir "$TODO_TEST"
 cd "$TODO_TEST"
 
 CURR_PWD="$(pwd)"
-NUM_TESTS=1
+NUM_TESTS=5
 
+desc1="Empty TODO 'hi' entry"
 input1="todo hi"
 output1="Creating $CURR_PWD/TODO.todo
      1\thi"
 
-input2="this is test 2"
+desc2="test2"
+input2="echo 'hi'"
 output2="this is output 2"
 
-input3="this is test 3"
+desc3="test3"
+input3='ls'
 output3="this is output 3"
 
-input4="this is test 4"
+desc4="test4"
+input4='echo "date"'
 output4="this is output 4"
 
-input5="this is test 5"
+desc5="test5"
+input5="ls -laF"
 output5="this is output 5"
 
 i=1
 while [ "$i" -le "$NUM_TESTS" ]; do
     eval CURR_INPUT=\$input$i
     eval EXP_OUTPUT=\$output$i
+    eval TEST_DESC=\$desc$i
+    echo "Executing test $i: $TEST_DESC"
     eval "$CURR_INPUT" > CURR_OUTPUT
     echo "$EXP_OUTPUT" > EXP_OUTPUT
     diff CURR_OUTPUT EXP_OUTPUT
     true $((i=i+1))
 done
-
-#CURR_PWD="$(pwd)"
-#echo "Creating $CURR_PWD/TODO.todo" >> test_case_1
-#echo "     1\thi" >> test_case_1
-
-#todo hi > test_case_1_output
-
-#diff test_case_1 test_case_1_output
-
-cd ..
-
