@@ -20,7 +20,7 @@ trap 'cd .. && rm -rf "$TODO_TEST" && exit' 0 2 3 15
 
 # Create and enter testing arena
 mkdir "$TODO_TEST"
-cd "$TODO_TEST"
+cd "$TODO_TEST" || return
 
 ########## BOILERPLATE MESSAGES ##########
 CURR_PWD="$(pwd)"
