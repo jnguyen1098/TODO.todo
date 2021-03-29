@@ -77,7 +77,7 @@ $ todo del 3
 ### Pop (delete) top-most item in TODO.todo
 
 ```bash
-$ todo pt
+$ todo
      1  first
      2  second
      3  third
