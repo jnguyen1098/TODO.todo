@@ -92,5 +92,5 @@ while [ "$i" -le "$NUM_TESTS" ]; do
     diff CURR_OUTPUT EXP_OUTPUT
     true $((i=i+1))
     rm -rf TODO.todo
-    cat CURR_OUTPUT > ../tmp_out
+#    cat CURR_OUTPUT > ../tmp_out
 done
