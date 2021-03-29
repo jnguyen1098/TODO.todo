@@ -17,20 +17,35 @@ mkdir "$TODO_TEST"
 cd "$TODO_TEST"
 
 CURR_PWD="$(pwd)"
-NUM_TESTS=5
+NUM_TESTS=3
 
 desc1="Empty TODO 'hi' entry"
 input1="todo hi"
 output1="Creating $CURR_PWD/TODO.todo
      1\thi"
 
-desc2="test2"
-input2="echo 'hi'"
-output2="this is output 2"
+desc2="Initializing an empty TODO.todo"
+input2='todo'
+output2="Creating $CURR_PWD/TODO.todo
+Your TODO.todo list is empty! Congrats!"
 
-desc3="test3"
-input3='ls'
-output3="this is output 3"
+desc3="Initialize empty list, push 'hi' and 'bye', delete #1, pt, push 'hi'"
+input3='todo
+todo "hi"
+todo "bye"
+todo do 1
+todo pt
+todo hi'
+output3="Creating $CURR_PWD/TODO.todo
+     1\thi"
+output3="Creating $CURR_PWD/TODO.todo
+Your TODO.todo list is empty! Congrats!
+     1\thi
+     1\thi
+     2\tbye
+     1\tbye
+Your TODO.todo list is empty! Congrats!
+     1\thi"
 
 desc4="test4"
 input4='echo "date"'
@@ -50,4 +65,6 @@ while [ "$i" -le "$NUM_TESTS" ]; do
     echo "$EXP_OUTPUT" > EXP_OUTPUT
     diff CURR_OUTPUT EXP_OUTPUT
     true $((i=i+1))
+    rm -rf TODO.todo
+#    cat CURR_OUTPUT
 done
