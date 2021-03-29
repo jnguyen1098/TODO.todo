@@ -65,6 +65,22 @@ input5="todo do 3"
 output5="$CREAT_MSG
 $EMPTY_MSG"
 
+desc6="Attempt to pb/pb empty TODO.todo"
+input6='
+todo pb
+todo pt
+todo pb
+todo pt
+todo pb
+todo pt'
+output6="$CREAT_MSG
+$EMPTY_MSG
+$EMPTY_MSG
+$EMPTY_MSG
+$EMPTY_MSG
+$EMPTY_MSG
+$EMPTY_MSG"
+
 i=1
 while [ "$i" -le "$NUM_TESTS" ]; do
     eval CURR_INPUT=\$input$i
