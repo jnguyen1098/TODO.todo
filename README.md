@@ -1,3 +1,5 @@
+![](https://s4.gifyu.com/images/pL3lJFI8l6.gif)
+
 # 📝 TODO.todo
 Simple bash TODO list manager that supports directory-specific TODO lists, push/pop, and line numbers.
 
