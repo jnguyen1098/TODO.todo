@@ -15,7 +15,7 @@ fi
 
 This will run `TODO.todo.sh` on startup and allow usage of the `todo` command.
 
-## Usage
+## Commands (`todo help`)
 ```
 Manage a directory-specific, line-by-line TODO list
 
@@ -27,7 +27,7 @@ Manage a directory-specific, line-by-line TODO list
     todo pb      - pop bottom TODO entry
 ```
 
-## Examples
+## Usage
 
 ### Initialize a TODO.todo in a directory
 
@@ -60,6 +60,26 @@ $ todo "fix func issue by next week ($(date --date="-7 days ago"))"
      2  go on a walk
      3  refactor methods
      4  fix func issue by next week (Sun 04 Apr 2021 06:36:08 PM EDT)
+```
+
+### Add an entry without escaping quotes (dangerous! spicy!)
+
+```bash
+$ todo
+     1  take a rest
+     2  go geocaching
+$ todo play some doom
+     1  take a rest
+     2  go geocaching
+     3  play some doom
+```
+
+```bash
+$ todo
+     1  take a rest
+$ todo fix func issue by next week `date --date="-7 days ago"`
+     1  take a rest
+     2  fix func issue by next week Sun 04 Apr 2021 06:36:08 PM EDT
 ```
 
 ### Check off entry by line number in TODO.todo

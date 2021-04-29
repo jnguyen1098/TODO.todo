@@ -69,12 +69,14 @@ todo() {
                     print_todo_file "$TODO_FILE"
                     ;;
                 *)
-                    print_todo_help
+                    echo "$*" >> "$TODO_FILE"
+                    print_todo_file "$TODO_FILE"
                     ;;
             esac
             ;;
         *)
-            print_todo_help
+            echo "$*" >> "$TODO_FILE"
+            print_todo_file "$TODO_FILE"
             ;;
     esac
 }
