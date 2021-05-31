@@ -1,6 +1,7 @@
-![](https://s4.gifyu.com/images/pL3lJFI8l6.gif)
+![Demonstration of TODO.todo](https://s4.gifyu.com/images/pL3lJFI8l6.gif)
 
 # 📝 TODO.todo
+
 Simple bash TODO list manager that supports directory-specific TODO lists, push/pop, and line numbers.
 
 ## Installation
@@ -16,7 +17,8 @@ fi
 This will run `TODO.todo.sh` on startup and allow usage of the `todo` command.
 
 ## Commands (`todo help`)
-```
+
+```lang-plaintext
 Manage a directory-specific, line-by-line TODO list
 
     todo         - print TODO.todo
