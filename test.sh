@@ -1,10 +1,12 @@
 #!/usr/bin/env sh
 
+set -e
+
 ########## VARIABLES ##########
 TODO_TEST="_tmp_TODO.todo_test"
 TODOtodo="./TODO.todo.sh"
 CURR_TEST=1
-NUM_TESTS=6
+NUM_TESTS=7
 
 # Check if the test folder remains
 if [ -d "$TODO_TEST" ]; then
@@ -86,6 +88,30 @@ $EMPTY_MSG
 $EMPTY_MSG
 $EMPTY_MSG
 $EMPTY_MSG"
+
+desc7="Add a bunch of stuff"
+input7='
+todo a
+todo b
+todo c
+todo d
+todo e'
+output7="$CREAT_MSG
+     1\ta
+     1\ta
+     2\tb
+     1\ta
+     2\tb
+     3\tc
+     1\ta
+     2\tb
+     3\tc
+     4\td
+     1\ta
+     2\tb
+     3\tc
+     4\td
+     5\te"
 
 ########## TEST RUNNER ##########
 while [ "$CURR_TEST" -le "$NUM_TESTS" ]; do
